@@ -1,0 +1,7 @@
+*.Rdata text
+*.rdb   binary
+*.rds   binary
+*.Rd    binary
+*.Rdx   binary
+*.Rmd	text
+*.R  	text
