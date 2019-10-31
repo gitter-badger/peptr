@@ -15,6 +15,8 @@ RoxygenNote: 6.1.99.9001
 Roxygen: list(markdown = TRUE)
 Imports: 
     vctrs,
-    rlang
+    rlang,
+    zeallot,
+    crayon
 Suggests: 
     testthat (>= 2.1.0)

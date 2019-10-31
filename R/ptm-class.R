@@ -28,7 +28,7 @@ new_ptm <- function(position = integer(),
 peptr_ptm <- function(position = integer(),
                       name = "unknown") {
 
-  check_position(position)
+  ptm_check(position, name)
 
   position <- vec_cast(position, to = integer())
   name <- vec_cast(name, to = character())
