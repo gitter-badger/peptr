@@ -17,8 +17,12 @@ Imports:
     vctrs,
     rlang,
     zeallot,
-    crayon
+    crayon,
 Suggests: 
     testthat (>= 2.1.0),
-    spelling
-Language: en-US
+    vdiffr,
+    usethis,
+    knitr,
+    rmarkdown
+Language: en-gb
+VignetteBuilder: knitr
