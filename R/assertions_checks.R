@@ -1,5 +1,5 @@
 #' @importFrom rlang abort is_integerish are_na
-check_position <- function(position) {
+position_check <- function(position) {
   if (!all(are_na(position))) {
     if (!is_integerish(position)) {
       abort("`position` must be an integer vector.", "peptr_wrong_type")
@@ -12,7 +12,7 @@ check_position <- function(position) {
 
 #' @importFrom vctrs vec_size
 ptm_check <- function(position, name) {
-  check_position(position)
+  position_check(position)
   if (!is.character(name) & vec_size(name) != 1L) {
     abort("`name` must be a single string.", "peptr_wrong_type")
   }
@@ -63,7 +63,7 @@ value_position_check <- function(value, position, range) {
     }
   }
 
-  check_position(position)
+  position_check(position)
   if (any(duplicated(position))) {
     abort("`position` must be unique", "peptr_duplicated_position")
   }

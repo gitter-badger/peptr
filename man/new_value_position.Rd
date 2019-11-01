@@ -6,7 +6,7 @@
 \usage{
 new_value_position(
   value = double(),
-  position = integer(),
+  position = peptr_position(),
   range = double(),
   name = "unknown"
 )

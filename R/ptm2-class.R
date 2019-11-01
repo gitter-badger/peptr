@@ -5,11 +5,11 @@
 #'
 #' @keywords internal
 #' @importFrom vctrs vec_assert new_vctr new_rcrd
-new_ptm2 <- function(position_1 = integer(),
-                     position_2 = integer(),
+new_ptm2 <- function(position_1 = peptr_position(),
+                     position_2 = peptr_position(),
                      name = "unknown") {
-  vec_assert(position_1, ptype = integer())
-  vec_assert(position_2, ptype = integer())
+  vec_assert(position_1, ptype = peptr_position())
+  vec_assert(position_2, ptype = peptr_position())
   vec_assert(name, ptype = character(), size = 1)
 
   new_rcrd(
@@ -29,12 +29,12 @@ new_ptm2 <- function(position_1 = integer(),
 #' @importFrom vctrs vec_cast vec_cast_common
 #' @examples
 #' peptr_ptm2(c(10L, 22L, 58L, 125L), c(15L, 137L, 62L, 60L), "disulphide bond")
-peptr_ptm2 <- function(position_1 = integer(),
-                       position_2 = integer(),
+peptr_ptm2 <- function(position_1 = peptr_position(),
+                       position_2 = peptr_position(),
                        name = "unknown") {
   ptm2_check(position_1, position_2)
 
-  c(position_1, position_2) %<-% vec_cast_common(position_1, position_2, .to = integer())
+  c(position_1, position_2) %<-% vec_cast_common(position_1, position_2, .to = peptr_position())
   name <- vec_cast(name, to = character())
 
   new_ptm2(position_1 = position_1, position_2 = position_2, name = name)
@@ -61,11 +61,19 @@ vec_ptype_abbr.peptr_ptm2 <- function(x, ...) {
 #' @export
 #' @importFrom vctrs field
 format.peptr_ptm2 <- function(x, ...) {
-  position_1 <- field(x, "position_1")
-  position_2 <- field(x, "position_2")
+  position_1 <- format(field(x, "position_1"))
+  position_2 <- format(field(x, "position_2"))
 
   link <- intToUtf8(8596)
-  out <- paste0(position_1, link, position_2)
+  out <- paste0(position_1, "--", position_2)
   out[is.na(position_1) | is.na(position_2)] <- NA
   out
+}
+
+#' @export
+obj_print_data.peptr_ptm2 <- function(x, ...) {
+  if (length(x) == 0)
+    return()
+  cat(format(x), sep = " ")
+  invisible(x)
 }

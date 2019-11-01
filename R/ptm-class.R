@@ -4,9 +4,9 @@
 #'
 #' @keywords internal
 #' @importFrom vctrs vec_assert new_vctr new_rcrd
-new_ptm <- function(position = integer(),
+new_ptm <- function(position = peptr_position(),
                     name = "unknown") {
-  vec_assert(position, ptype = integer())
+  vec_assert(position, ptype = peptr_position())
   vec_assert(name, ptype = character(), size = 1)
 
   new_rcrd(
@@ -26,11 +26,11 @@ new_ptm <- function(position = integer(),
 #' @examples
 #' peptr_ptm(c(10L, 22L, 58L, 125L), "phosphorylation")
 #' peptr_ptm(c(58L, 132L, 24L), "O-glycosylation")
-peptr_ptm <- function(position = integer(),
+peptr_ptm <- function(position = peptr_position(),
                       name = "unknown") {
   ptm_check(position, name)
 
-  position <- vec_cast(position, to = integer())
+  position <- vec_cast(position, to = peptr_position())
   name <- vec_cast(name, to = character())
 
   new_ptm(position = position, name = name)
@@ -57,9 +57,16 @@ vec_ptype_abbr.peptr_ptm <- function(x, ...) {
 #' @export
 #' @importFrom vctrs field
 format.peptr_ptm <- function(x, ...) {
-  position <- vctrs::field(x, "position")
-
-  out <- paste0(position)
+  position <- field(x, "position")
+  out <- format(position)
   out[is.na(position)] <- NA
   out
+}
+
+#' @export
+obj_print_data.peptr_ptm <- function(x, ...) {
+  if (length(x) == 0)
+    return()
+  cat(format(x), sep = " ")
+  invisible(x)
 }

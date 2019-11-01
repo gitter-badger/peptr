@@ -4,7 +4,7 @@
 \alias{new_ptm}
 \title{Internal constructor to create \code{peptr_ptm} type}
 \usage{
-new_ptm(position = integer(), name = "unknown")
+new_ptm(position = peptr_position(), name = "unknown")
 }
 \description{
 Asserts that \code{position} is a vector of integers, and that \code{name} is a string.

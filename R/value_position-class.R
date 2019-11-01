@@ -6,11 +6,11 @@
 #' @keywords internal
 #' @importFrom vctrs vec_assert new_vctr new_rcrd
 new_value_position <- function(value = double(),
-                               position = integer(),
+                               position = peptr_position(),
                                range = double(),
                                name = "unknown") {
   vec_assert(value, ptype = double())
-  vec_assert(position, ptype = integer())
+  vec_assert(position, ptype = peptr_position())
   vec_assert(range, ptype = double(), size = 2)
   vec_assert(name, ptype = character(), size = 1)
 
@@ -32,14 +32,14 @@ new_value_position <- function(value = double(),
 #' @examples
 #' peptr_value_position(c(0.5, 0.3, 0.7), c(1, 2, 3), range = c(0, 1), name = "hydrophobicity")
 peptr_value_position <- function(value = double(),
-                                 position = integer(),
+                                 position = peptr_position(),
                                  range = double(),
                                  name = "unknown") {
 
   value_position_check(value, position, range)
 
   value <- vec_cast(value, to = double())
-  position <- vec_cast(position, to = integer())
+  position <- vec_cast(position, to = peptr_position())
   range <- vec_cast(range, to = double())
   name <- vec_cast(name, to = character())
 
@@ -74,8 +74,8 @@ vec_ptype_abbr.peptr_value_position <- function(x, ...) {
 #' @importFrom crayon italic silver
 format.peptr_value_position <- function(x, ...) {
   value <- field(x, "value")
-  position <- field(x, "position")
-  out <- paste0(silver(italic(paste0(position, ":"))), value)
+  position <- format(field(x, "position"))
+  out <- paste0(position, ":", value)
   out[is.na(value) | is.na(position)] <- NA
   out
 }

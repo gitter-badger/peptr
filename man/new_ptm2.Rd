@@ -4,7 +4,11 @@
 \alias{new_ptm2}
 \title{Internal constructor to create \code{peptr_ptm2} type}
 \usage{
-new_ptm2(position_1 = integer(), position_2 = integer(), name = "unknown")
+new_ptm2(
+  position_1 = peptr_position(),
+  position_2 = peptr_position(),
+  name = "unknown"
+)
 }
 \description{
 Asserts that \code{position_1} and \code{position_2} integer vectors,

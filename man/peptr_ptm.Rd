@@ -4,7 +4,7 @@
 \alias{peptr_ptm}
 \title{A class for post-translational modifications that occurs on one residue}
 \usage{
-peptr_ptm(position = integer(), name = "unknown")
+peptr_ptm(position = peptr_position(), name = "unknown")
 }
 \arguments{
 \item{position}{An integer vector of the modified residues positions}
