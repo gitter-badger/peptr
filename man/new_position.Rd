@@ -2,11 +2,15 @@
 % Please edit documentation in R/position-class.R
 \name{new_position}
 \alias{new_position}
-\title{Internal constructor to create \code{peptr_position} type}
+\title{Internal constructor to create \code{peptr_position} type
+
+Asserts that \code{x} is a integer(-ish) vector.}
 \usage{
 new_position(x = integer())
 }
 \description{
-Asserts that
+Internal constructor to create \code{peptr_position} type
+
+Asserts that \code{x} is a integer(-ish) vector.
 }
 \keyword{internal}

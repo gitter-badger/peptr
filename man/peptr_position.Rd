@@ -2,13 +2,16 @@
 % Please edit documentation in R/position-class.R
 \name{peptr_position}
 \alias{peptr_position}
-\title{A decimalized class for pounds, shillings, and pence values}
+\title{A for positions on peptidic chains}
 \usage{
 peptr_position(x = integer())
 }
 \arguments{
-\item{x}{An integer vectore representing positions}
+\item{x}{An integer vector representing positions}
 }
 \description{
-A decimalized class for pounds, shillings, and pence values
+A for positions on peptidic chains
+}
+\examples{
+peptr_position(1:10)
 }

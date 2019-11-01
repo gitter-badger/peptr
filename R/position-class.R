@@ -1,19 +1,26 @@
-#' Internal constructor to create `peptr_position` type
+# Constructor ----
+
+#' @title Internal constructor to create `peptr_position` type
 #'
-#' Asserts that
+#' Asserts that `x` is a integer(-ish) vector.
 #'
 #' @keywords internal
+#' @importFrom vctrs new_vctr vec_assert
 new_position <- function(x = integer()) {
   vec_assert(x, ptype = integer())
 
-  vctrs::new_vctr(x,
-                  class = "peptr_position")
+  new_vctr(x, class = "peptr_position")
 }
 
-#' A decimalized class for pounds, shillings, and pence values
+# Helper ----
+
+#' @title A for positions on peptidic chains
 #'
-#' @param x An integer vectore representing positions
+#' @param x An integer vector representing positions
 #' @export
+#' @importFrom vctrs vec_cast
+#' @examples
+#' peptr_position(1:10)
 peptr_position <- function(x = integer()) {
 
   position_check(x)
@@ -25,8 +32,27 @@ peptr_position <- function(x = integer()) {
 
 setOldClass(c("peptr_position", "vctrs_vctr"))
 
-peptr_is_position <- function(x) inherits(x, "peptr_position")
+# Class check ----
 
+#' @title Test if an object is of class `deb_decimal`
+#'
+#' @description Test if an object is of class `peptr_position`.
+#'
+#' @param x An object.
+#'
+#' @return `TRUE` if object is of class `peptr_position` and `FALSE` if it is not.
+#' @export
+#' @examples
+#' x <- peptr_position(1:30)
+#' y <- 1:30
+#'
+#' peptr_is_position(x)
+#' peptr_is_position(y)
+peptr_is_position <- function(x) {
+  inherits(x, "peptr_position")
+}
+
+# Formatting ----
 vec_ptype_abbr.peptr_position <- function(x, ...) {
   "pos"
 }
@@ -47,7 +73,7 @@ obj_print_data.peptr_position <- function(x, ...) {
   invisible(x)
 }
 
-
+# Casting ----
 
 # coerce integer to peptr_position, vice versa
 # coerce double to peptr_position, vice versa
