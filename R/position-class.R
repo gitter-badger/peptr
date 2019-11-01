@@ -107,6 +107,16 @@ vec_cast.peptr_position.peptr_position <- function(x, to, ...) {
 vec_ptype2.peptr_position.integer <- function(x, y, ...) integer()
 vec_ptype2.integer.peptr_position <- function(x, y, ...) integer()
 
+vec_cast.peptr_position.integer <- function(x, to, ...) {
+  peptr_position(x)
+}
+
+#' @importFrom vctrs vec_data
+vec_cast.integer.peptr_position <- function(x, to, ...) {
+  vec_data(x)
+}
+
+
 # Double
 
 vec_ptype2.peptr_position.double <- function(x, y, ...) double()
