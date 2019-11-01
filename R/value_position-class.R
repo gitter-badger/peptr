@@ -25,11 +25,12 @@ new_value_position <- function(value = double(),
 #'
 #' @param value A double vector of the residue value
 #' @param position An integer vector of the residue position
+#' @param range A vector of 2 doubles to scale `value`
 #' @param name A string to identify the variable (e.g. disorder, Default: "unknown")
 #' @export
 #' @importFrom vctrs vec_cast vec_cast_common
 #' @examples
-#' peptr_value_position(0.5, 1, c(0, 1))
+#' peptr_value_position(c(0.5, 0.3, 0.7), c(1, 2, 3), range = c(0, 1), name = "hydrophobicity")
 peptr_value_position <- function(value = double(),
                                  position = integer(),
                                  range = double(),
@@ -81,6 +82,9 @@ format.peptr_value_position <- function(x, ...) {
 
 #' @export
 obj_print_data.peptr_value_position <- function(x, ...) {
+  if (length(x) == 0)
+    return()
   cat(format(x), sep = " ")
   invisible(x)
 }
+

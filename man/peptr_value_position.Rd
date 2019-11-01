@@ -16,11 +16,13 @@ peptr_value_position(
 
 \item{position}{An integer vector of the residue position}
 
+\item{range}{A vector of 2 doubles to scale \code{value}}
+
 \item{name}{A string to identify the variable (e.g. disorder, Default: "unknown")}
 }
 \description{
 A class for position specific variable
 }
 \examples{
-peptr_value_position(0.5, 1, c(0, 1))
+peptr_value_position(c(0.5, 0.3, 0.7), c(1, 2, 3), range = c(0, 1), name = "hydrophobicity")
 }
