@@ -22,7 +22,6 @@ new_position <- function(x = integer()) {
 #' @examples
 #' peptr_position(1:10)
 peptr_position <- function(x = integer()) {
-
   position_check(x)
 
   x <- vec_cast(x, to = integer())
@@ -67,8 +66,9 @@ format.peptr_position <- function(x, ...) {
 
 #' @export
 obj_print_data.peptr_position <- function(x, ...) {
-  if (length(x) == 0)
+  if (length(x) == 0) {
     return()
+  }
   cat(format(x), sep = " ")
   invisible(x)
 }

@@ -40,23 +40,25 @@ ptm2_check <- function(position_1, position_2) {
   }
 
   if (vec_size(position_1) != vec_size(position_2)) {
-    abort(paste0(
-      "`position_1` and `position_2` must have the same size (",
-      vec_size(position_1), "!=", vec_size(position_2),
-      ")."
-    ),
-    "peptr_wrong_size")
+    abort(
+      paste0(
+        "`position_1` and `position_2` must have the same size (",
+        vec_size(position_1), "!=", vec_size(position_2),
+        ")."
+      ),
+      "peptr_wrong_size"
+    )
   }
 
-  if (any(mapply(function(x, y) {x == y}, position_1, position_2))) {
+  if (any(mapply(function(x, y) {
+    x == y
+  }, position_1, position_2))) {
     abort("All `position_1` and `position_2` must be different.", "peptr_wrong_value")
   }
-
 }
 
 
 value_position_check <- function(value, position, range) {
-
   if (!all(are_na(value))) {
     if (!is.double(value)) {
       abort("`value` must be a double vector.", "peptr_wrong_type")

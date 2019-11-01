@@ -35,7 +35,6 @@ peptr_value_position <- function(value = double(),
                                  position = peptr_position(),
                                  range = double(),
                                  name = "unknown") {
-
   value_position_check(value, position, range)
 
   value <- vec_cast(value, to = double())
@@ -82,9 +81,9 @@ format.peptr_value_position <- function(x, ...) {
 
 #' @export
 obj_print_data.peptr_value_position <- function(x, ...) {
-  if (length(x) == 0)
+  if (length(x) == 0) {
     return()
+  }
   cat(format(x), sep = " ")
   invisible(x)
 }
-

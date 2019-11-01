@@ -72,8 +72,9 @@ format.peptr_ptm2 <- function(x, ...) {
 
 #' @export
 obj_print_data.peptr_ptm2 <- function(x, ...) {
-  if (length(x) == 0)
+  if (length(x) == 0) {
     return()
+  }
   cat(format(x), sep = " ")
   invisible(x)
 }
