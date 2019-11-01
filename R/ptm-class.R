@@ -6,13 +6,14 @@
 #' @importFrom vctrs vec_assert new_vctr new_rcrd
 new_ptm <- function(position = integer(),
                     name = "unknown") {
-
   vec_assert(position, ptype = integer())
   vec_assert(name, ptype = character(), size = 1)
 
-  new_rcrd(list(position = position),
-           name = name,
-           class = "peptr_ptm")
+  new_rcrd(
+    fields = list(position = position),
+    name = name,
+    class = "peptr_ptm"
+  )
 }
 
 
@@ -27,7 +28,6 @@ new_ptm <- function(position = integer(),
 #' peptr_ptm(c(58L, 132L, 24L), "O-glycosylation")
 peptr_ptm <- function(position = integer(),
                       name = "unknown") {
-
   ptm_check(position, name)
 
   position <- vec_cast(position, to = integer())
@@ -55,6 +55,7 @@ vec_ptype_abbr.peptr_ptm <- function(x, ...) {
 }
 
 #' @export
+#' @importFrom vctrs field
 format.peptr_ptm <- function(x, ...) {
   position <- vctrs::field(x, "position")
 

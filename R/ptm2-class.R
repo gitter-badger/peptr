@@ -12,7 +12,8 @@ new_ptm2 <- function(position_1 = integer(),
   vec_assert(position_2, ptype = integer())
   vec_assert(name, ptype = character(), size = 1)
 
-  new_rcrd(list(position_1 = position_1, position_2 = position_2),
+  new_rcrd(
+    fields = list(position_1 = position_1, position_2 = position_2),
     name = name,
     class = "peptr_ptm2"
   )
