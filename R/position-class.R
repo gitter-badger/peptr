@@ -75,5 +75,52 @@ obj_print_data.peptr_position <- function(x, ...) {
 
 # Casting ----
 
+vec_ptype2.peptr_position <- function(x, y, ...) {
+  UseMethod("vec_ptype2.peptr_position", y)
+}
+
+#' @importFrom vctrs vec_default_ptype2
+vec_ptype2.peptr_position.default <- function(x, y, ..., x_arg = "x", y_arg = "y") {
+  vec_default_ptype2(x, y, x_arg = x_arg, y_arg = y_arg)
+}
+
+vec_cast.peptr_position <- function(x, to, ...) {
+  UseMethod("vec_cast.peptr_position")
+}
+
+#' @importFrom vctrs vec_default_cast
+vec_cast.peptr_position.default <- function(x, to, ...) {
+  vec_default_cast(x, to)
+}
+
+vec_ptype2.peptr_position.peptr_position <- function(x, y, ...) {
+  new_position()
+}
+
+vec_cast.peptr_position.peptr_position <- function(x, to, ...) {
+  x
+}
+
+
+# Integer
+
+vec_ptype2.peptr_position.integer <- function(x, y, ...) integer()
+vec_ptype2.integer.peptr_position <- function(x, y, ...) integer()
+
+# Double
+
+vec_ptype2.peptr_position.double <- function(x, y, ...) double()
+vec_ptype2.double.peptr_position <- function(x, y, ...) double()
+
+vec_cast.peptr_position.double <- function(x, to, ...) {
+  peptr_position(x)
+}
+
+#' @importFrom vctrs vec_data
+vec_cast.double.peptr_position <- function(x, to, ...) {
+  as.double(vec_data(x))
+}
+
+
 # coerce integer to peptr_position, vice versa
 # coerce double to peptr_position, vice versa

@@ -5,9 +5,10 @@ position_check <- function(position) {
       abort("`position` must be an integer vector.", "peptr_wrong_type")
     }
   }
-  if (any(position < 1L)) {
+  if (any(!is.na(position) & position < 1L)) {
     abort("`position` should only contain positive integers", "peptr_wrong_value")
   }
+
 }
 
 #' @importFrom vctrs vec_size
