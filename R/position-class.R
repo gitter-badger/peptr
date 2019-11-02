@@ -83,19 +83,27 @@ vec_ptype2.peptr_position.default <- function(x, y, ..., x_arg = "x", y_arg = "y
   vec_default_ptype2(x, y, x_arg = x_arg, y_arg = y_arg)
 }
 
+#' @rdname vctrs-compat
+#' @method vec_cast peptr_position
+#' @export
+#' @export vec_cast.peptr_position
 vec_cast.peptr_position <- function(x, to, ...) {
   UseMethod("vec_cast.peptr_position")
 }
 
 #' @importFrom vctrs vec_default_cast
+#' @export
 vec_cast.peptr_position.default <- function(x, to, ...) {
   vec_default_cast(x, to)
 }
 
+#' @method vec_ptype2.peptr_position peptr_position
 vec_ptype2.peptr_position.peptr_position <- function(x, y, ...) {
   new_position()
 }
 
+#' @method vec_cast.peptr_position peptr_position
+#' @export
 vec_cast.peptr_position.peptr_position <- function(x, to, ...) {
   x
 }

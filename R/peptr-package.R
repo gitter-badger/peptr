@@ -7,9 +7,22 @@
 ## usethis namespace: end
 NULL
 
-#' Unpacking assignment
+#' @title vctrs compatibility functions for maths, casting, coercion, and comparison
 #'
-#' See \code{\link[zeallot]{\%<-\%}} for more details.
+#' @param x,y Vectors.
+#' @param op Arithmetic operation,
+#' @param to Type to cast to.
+#' @param ... Arguments passed on to further methods.
+#' @param .fn Mathematical function.
+#' @param .x Vector
+#'
+#' @name vctrs-compat
+NULL
+
+
+#' @title Unpacking assignment
+#'
+#' @description See \code{\link[zeallot]{\%<-\%}} for more details.
 #'
 #' @name %<-%
 #' @rdname multi-assign
