@@ -40,10 +40,9 @@ library(peptr)
 ## Code of Conduct
 
 Please note that the peptr project is released with a [Contributor Code
-of
-Conduct](https://contributor-covenant.org/version/1/0/0/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
+of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this
+project, you agree to abide by its terms.
 
 ## License
 
-MIT - Hippocratic (see LICENSE.md).
+MIT - Hippocratic (see [LICENSE.md](LICENSE.md)).
