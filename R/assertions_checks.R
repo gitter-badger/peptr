@@ -8,7 +8,6 @@ position_check <- function(position) {
   if (any(!is.na(position) & position < 1L)) {
     abort("`position` should only contain positive integers", "peptr_wrong_value")
   }
-
 }
 
 #' @importFrom vctrs vec_size
