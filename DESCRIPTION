@@ -18,11 +18,13 @@ Imports:
     rlang,
     zeallot,
     crayon,
+    methods
 Suggests: 
     testthat (>= 2.1.0),
     vdiffr,
     usethis,
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 Language: en-gb
 VignetteBuilder: knitr

@@ -15,3 +15,7 @@ A for positions on peptidic chains
 \examples{
 peptr_position(1:10)
 }
+\seealso{
+Other position: \code{\link{peptr_is_position}()}
+}
+\concept{position}

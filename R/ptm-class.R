@@ -1,6 +1,8 @@
-#' Internal constructor to create `peptr_ptm` type
+# Constructor ----
+
+#' @title Internal constructor to create `peptr_ptm` type
 #'
-#' Asserts that `position` is a vector of integers, and that `name` is a string.
+#' @description Asserts that `position` is a vector of integers, and that `name` is a string.
 #'
 #' @keywords internal
 #' @importFrom vctrs vec_assert new_vctr new_rcrd
@@ -16,8 +18,9 @@ new_ptm <- function(position = peptr_position(),
   )
 }
 
+# Helper ----
 
-#' A class for post-translational modifications that occurs on one residue
+#' @title A class for post-translational modifications that occurs on one residue
 #'
 #' @param position An integer vector of the modified residues positions
 #' @param name A string to identify the PTM (e.g. Phosphorylation, Default: "unknown")
@@ -38,16 +41,38 @@ peptr_ptm <- function(position = peptr_position(),
 
 setOldClass(c("peptr_ptm", "vctrs_vctr"))
 
-peptr_ptm_name <- function(x) {
+# Getters ----
+
+#' @title Access the name attribute of a `peptr_ptm` object.
+#'
+#' @keywords internal
+peptr_get_ptm_name <- function(x) {
   attr(x, "name")
 }
 
+# Class check ----
+
+
+#' @title Test if an object is of class `peptr_ptm`
+#'
+#' @param x An object.
+#'
+#' @return `TRUE` if object is of class `peptr_ptm` and `FALSE` if it is not.
+#' @export
+#' @examples
+#' x <- peptr_ptm(c(5, 3, 8))
+#' y <- c(5, 3, 8)
+#'
+#' peptr_is_ptm(x)
+#' peptr_is_ptm(y)
 peptr_is_ptm <- function(x) {
   inherits(x, "peptr_ptm")
 }
 
+# Formatting ----
+
 vec_ptype_full.peptr_ptm <- function(x, ...) {
-  paste0("ptm<", peptr_ptm_name(x), ">")
+  paste0("ptm<", peptr_get_ptm_name(x), ">")
 }
 
 vec_ptype_abbr.peptr_ptm <- function(x, ...) {
@@ -63,7 +88,6 @@ format.peptr_ptm <- function(x, ...) {
   out
 }
 
-#' @export
 obj_print_data.peptr_ptm <- function(x, ...) {
   if (length(x) == 0) {
     return()
@@ -71,3 +95,76 @@ obj_print_data.peptr_ptm <- function(x, ...) {
   cat(format(x), sep = " ")
   invisible(x)
 }
+
+# Casting ----
+
+
+vec_ptype2.peptr_ptm <- function(x, y, ...) {
+  UseMethod("vec_ptype2.peptr_ptm", y)
+}
+
+#' @importFrom vctrs vec_default_ptype2
+vec_ptype2.peptr_ptm.default <- function(x, y, ..., x_arg = "x", y_arg = "y") {
+  vec_default_ptype2(x, y, x_arg = x_arg, y_arg = y_arg)
+}
+
+vec_cast.peptr_ptm <- function(x, to, ...) {
+  UseMethod("vec_cast.peptr_ptm")
+}
+
+#' @importFrom vctrs vec_default_cast
+vec_cast.peptr_ptm.default <- function(x, to, ...) {
+  vec_default_cast(x, to)
+}
+
+vec_ptype2.peptr_position.peptr_ptm <- function(x, y, ...) {
+  new_ptm()
+}
+
+vec_cast.peptr_position.peptr_ptm <- function(x, to, ...) {
+  x
+}
+
+
+# Integer
+
+vec_ptype2.peptr_ptm.integer <- function(x, y, ...) integer()
+vec_ptype2.integer.peptr_ptm <- function(x, y, ...) integer()
+
+vec_cast.peptr_ptm.integer <- function(x, to, ...) {
+  peptr_ptm(x)
+}
+
+#' @importFrom vctrs vec_data
+vec_cast.integer.peptr_ptm <- function(x, to, ...) {
+  as.integer(vec_data(x)$position)
+}
+
+
+# Double
+
+vec_ptype2.peptr_ptm.double <- function(x, y, ...) double()
+vec_ptype2.double.peptr_ptm <- function(x, y, ...) double()
+
+vec_cast.peptr_ptm.double <- function(x, to, ...) {
+  peptr_ptm(peptr_position(x))
+}
+
+#' @importFrom vctrs vec_data
+vec_cast.double.peptr_ptm <- function(x, to, ...) {
+  as.double(vec_data(x)$position)
+}
+
+# peptr_position
+
+#' vec_ptype2.peptr_ptm.peptr_position <- function(x, y, ...) peptr_position()
+#' vec_ptype2.peptr_position.peptr_ptm <- function(x, y, ...) peptr_position()
+#'
+#' vec_cast.peptr_ptm.peptr_position <- function(x, to, ...) {
+#'   peptr_ptm(x)
+#' }
+#'
+#' #' @importFrom vctrs vec_data
+#' vec_cast.peptr_position.peptr_ptm <- function(x, to, ...) {
+#'   peptr_position(vec_data(x)$position)
+#' }

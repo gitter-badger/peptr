@@ -70,7 +70,6 @@ format.peptr_ptm2 <- function(x, ...) {
   out
 }
 
-#' @export
 obj_print_data.peptr_ptm2 <- function(x, ...) {
   if (length(x) == 0) {
     return()

@@ -79,7 +79,6 @@ format.peptr_value_position <- function(x, ...) {
   out
 }
 
-#' @export
 obj_print_data.peptr_value_position <- function(x, ...) {
   if (length(x) == 0) {
     return()

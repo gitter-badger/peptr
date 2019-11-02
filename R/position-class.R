@@ -15,7 +15,7 @@ new_position <- function(x = integer()) {
 # Helper ----
 
 #' @title A for positions on peptidic chains
-#'
+#' @family position
 #' @param x An integer vector representing positions
 #' @export
 #' @importFrom vctrs vec_cast
@@ -33,8 +33,8 @@ setOldClass(c("peptr_position", "vctrs_vctr"))
 
 # Class check ----
 
-#' @title Test if an object is of class `deb_decimal`
-#'
+#' @title Test if an object is of class `peptr_position`
+#' @family position
 #' @description Test if an object is of class `peptr_position`.
 #'
 #' @param x An object.
@@ -64,7 +64,6 @@ format.peptr_position <- function(x, ...) {
 }
 
 
-#' @export
 obj_print_data.peptr_position <- function(x, ...) {
   if (length(x) == 0) {
     return()
@@ -123,7 +122,8 @@ vec_ptype2.peptr_position.double <- function(x, y, ...) double()
 vec_ptype2.double.peptr_position <- function(x, y, ...) double()
 
 vec_cast.peptr_position.double <- function(x, to, ...) {
-  peptr_position(x)
+  message("HERE")
+  peptr_position(as.integer(x))
 }
 
 #' @importFrom vctrs vec_data
@@ -131,6 +131,3 @@ vec_cast.double.peptr_position <- function(x, to, ...) {
   as.double(vec_data(x))
 }
 
-
-# coerce integer to peptr_position, vice versa
-# coerce double to peptr_position, vice versa

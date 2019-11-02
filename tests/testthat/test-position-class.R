@@ -24,14 +24,15 @@ test_that("peptr_position works", {
   expect_false(peptr_is_position(x))
   expect_true(is.na(peptr_position(NA)))
   expect_equal(is.na(peptr_position(c(1, 3, NA))), c(FALSE, FALSE, TRUE))
-  expect_equal(as.integer(y), x)
+  expect_is(as.integer(y), "integer")
+  expect_is(as.numeric(y), "numeric")
 })
 
 # Print ----
 
 test_that("peptr_position prints", {
   expect_that(print(y), prints_text())
-  expect_that(print(peptr_position(NA)), prints_text())
+  expect_output(print(peptr_position(NA)))
   expect_equal(vctrs::vec_ptype_abbr(y), "pos")
 })
 
