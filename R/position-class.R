@@ -138,4 +138,3 @@ vec_cast.peptr_position.double <- function(x, to, ...) {
 vec_cast.double.peptr_position <- function(x, to, ...) {
   as.double(vec_data(x))
 }
-
