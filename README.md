@@ -7,9 +7,13 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
+[![Project Status: WIP Ã¢â‚¬â€œ Initial development is in progress, but
+there has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Travis build
+status](https://travis-ci.org/jeanmanguy/peptr.svg?branch=master)](https://travis-ci.org/jeanmanguy/peptr)
+[![Codecov test
+coverage](https://codecov.io/gh/jeanmanguy/peptr/branch/master/graph/badge.svg)](https://codecov.io/gh/jeanmanguy/peptr?branch=master)
 <!-- badges: end -->
 
 The goal of peptr is to …
@@ -32,3 +36,14 @@ devtools::install_github("jeanmanguy/peptr")
 library(peptr)
 ## basic example code
 ```
+
+## Code of Conduct
+
+Please note that the peptr project is released with a [Contributor Code
+of
+Conduct](https://contributor-covenant.org/version/1/0/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+## License
+
+MIT - Hippocratic (see LICENSE.md).
