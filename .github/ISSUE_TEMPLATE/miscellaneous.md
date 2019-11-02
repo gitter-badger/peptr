@@ -2,7 +2,7 @@
 name: Miscellaneous
 about: Suggest an idea or raise a concern.
 title: ''
-labels: 'enhancement'
+labels: 'feature'
 assignees: ''
 
 ---
